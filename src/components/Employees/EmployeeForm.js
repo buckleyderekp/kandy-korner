@@ -9,9 +9,15 @@ export default props => {
     const name = useRef()
     const location = useRef()
     const address = useRef()
+    const manager = useRef()
+    const fullTime = useRef()
+    const employeePay = useRef()
 
     const constructNewEmployee = () => {
+        const isManager = (manager.current.value === "yes" ? true : false)
+        const isFullTime = (fullTime.current.value === "yes" ? true : false)
         const locationId = parseInt(location.current.value)
+        const hourlyPay = parseInt(employeePay.current.value)
 
         if (locationId === 0) {
             window.alert("Please select a location")
@@ -19,7 +25,9 @@ export default props => {
             addEmployee({
                 name: name.current.value,
                 locationId: locationId,
-                address: address.current.value
+                manager: isManager,
+                fulltime: isFullTime,
+                hourlyRate: hourlyPay
             })
             .then(props.toggler)
         }
@@ -44,16 +52,50 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="employeeAddress">Address: </label>
+                    <label htmlFor="employeePay">Hourly Pay: </label>
                     <input
                         type="text"
-                        id="employeeAddress"
-                        ref={address}
+                        id="employeePay"
+                        ref={employeePay}
                         required
                         autoFocus
                         className="form-control"
-                        placeholder="Street address"
+                        placeholder="Hourly Rate"
                     />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="fullTime">Is this employee full time: </label>
+                    <select
+                        defaultValue=""
+                        name="fullTime"
+                        ref={fullTime}
+                        id="isFullTime"
+                        className="form-control"
+                    >
+                        <option value="0">Select option</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="manager">Is this employee a manager: </label>
+                    <select
+                        defaultValue=""
+                        name="manager"
+                        ref={manager}
+                        id="isManager"
+                        className="form-control"
+                    >
+                        <option value="0">Select option</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        
+                    </select>
                 </div>
             </fieldset>
             <fieldset>
@@ -69,7 +111,7 @@ export default props => {
                         <option value="0">Select a location</option>
                         {locations.map(e => (
                             <option key={e.id} value={e.id}>
-                                {e.name}
+                                {e.address}
                             </option>
                         ))}
                     </select>

@@ -5,6 +5,7 @@ import { LocationContext } from "../Location/LocationProvider"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import EmployeeForm from "./EmployeeForm"
 import "./Employee.css"
+import "../KandyKorner.css"
 
 
 export default () => {

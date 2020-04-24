@@ -15,7 +15,7 @@ export default () => {
         {
             products.map(pro => {
                 
-                const matchingProductType = productTypes.find(type => type.id === pro.typeId)
+                const matchingProductType = productTypes.find(type => type.id === pro.typeId) || {}
                 
                return <Product key={pro.id} product={pro} 
                    productType={matchingProductType}/>
