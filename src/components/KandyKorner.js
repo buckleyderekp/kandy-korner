@@ -1,27 +1,12 @@
-import React from "react"
-import LocationList from "./Location/LocationList"
-import { LocationProvider } from "./Location/LocationProvider"
-import ProductList from "./Products/ProductList"
-import { ProductProvider } from "./Products/ProductProvider"
-import { EmployeeProvider } from "./Employees/EmployeeProvider"
-import { ProductTypeProvider } from "./Products/ProductTypeProvider"
-import EmployeeList from "./Employees/EmployeeList"
+import React, { useState } from "react"
+import Dashboard from "./Dashboard"
+import Auth from "./auth/Auth"
 
-export default () => (
-    <>
+export default () => {
+    const [check, update] = useState(false)
+    const toggle = () => update(!check)
 
-        <ProductProvider>
-            <ProductTypeProvider>
-                <ProductList />
-            </ProductTypeProvider>
-        </ProductProvider>
-
-        <LocationProvider>
-            <EmployeeProvider>
-                <EmployeeList />
-                <LocationList />
-            </EmployeeProvider>
-        </LocationProvider>
-
-    </>
-)
+    return (
+        localStorage.getItem("kandy_customer") ? <Dashboard /> : <Auth toggle={toggle} />
+    )
+}
