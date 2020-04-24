@@ -6,6 +6,7 @@ import { ProductProvider } from "./Products/ProductProvider"
 import { EmployeeProvider } from "./Employees/EmployeeProvider"
 import { ProductTypeProvider } from "./Products/ProductTypeProvider"
 import EmployeeList from "./Employees/EmployeeList"
+import "./Dashboard.css"
 
 export default () => (
     <>
