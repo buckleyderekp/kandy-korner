@@ -4,6 +4,7 @@ import Employee from "./Employee"
 import { LocationContext } from "../Location/LocationProvider"
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap"
 import EmployeeForm from "./EmployeeForm"
+import "./Employee.css"
 
 
 export default () => {
@@ -22,7 +23,7 @@ export default () => {
             <ul className="employees">
                 {
                     employees.map(employee => {
-                        const loc = locations.find(l => l.id === employee.locationId)
+                        const loc = locations.find(l => l.id === employee.locationId) || {}
 
                         return <Employee key={employee.id} location={loc} employee={employee} />
                     })

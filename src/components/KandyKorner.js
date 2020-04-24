@@ -9,16 +9,18 @@ import EmployeeList from "./Employees/EmployeeList"
 
 export default () => (
     <>
+
+        <ProductProvider>
+            <ProductTypeProvider>
+                <ProductList />
+            </ProductTypeProvider>
+        </ProductProvider>
+
         <LocationProvider>
-            <ProductProvider>
-                <ProductTypeProvider>
-                    <EmployeeProvider>
-                        <LocationList />
-                        <ProductList />
-                        <EmployeeList />
-                    </EmployeeProvider>
-                </ProductTypeProvider>
-            </ProductProvider>
+            <EmployeeProvider>
+                <EmployeeList />
+                <LocationList />
+            </EmployeeProvider>
         </LocationProvider>
 
     </>
